@@ -1,0 +1,9 @@
+node_modules/
+servex-backend/node_modules/
+servex-frontend/node_modules/
+
+servex-backend/serviceAccountKey.json
+servex-backend/.env
+
+dist/
+servex-backend/dist/
