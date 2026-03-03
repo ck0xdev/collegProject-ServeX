@@ -8,7 +8,8 @@ import userRoutes from './routes/userRoutes';
 import serviceRoutes from './routes/serviceRoutes';
 import bookingRoutes from './routes/bookingRoutes';
 import chatRoutes from './routes/chatRoutes';
-// import paymentRoutes from './routes/paymentRoutes';
+import deliveryRoutes from './routes/deliveryRoutes';
+import paymentRoutes from './routes/paymentRoutes';
 
 dotenv.config();
 
@@ -31,7 +32,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/chats', chatRoutes);
-// app.use('/api/payments', paymentRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/delivery', deliveryRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'ServeX API and Socket Server Running' });
