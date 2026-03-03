@@ -24,7 +24,7 @@ export const submitDelivery = async (req: AuthRequest, res: Response): Promise<v
 // 2. Customer attempts to access the delivery (LOCKED BEHIND PAYMENT)
 export const getDelivery = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    const { bookingId } = req.params;
+    const bookingId = req.params.bookingId as string;
     const customerId = req.user.uid;
 
     const bookingDoc = await db.collection('bookings').doc(bookingId).get();
