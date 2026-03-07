@@ -1,9 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Apple Human Interface Guidelines - Global Styles */
+:root {
+  --apple-bg: #f5f5f7;
+  --apple-blue: #0071e3;
+}
 
 body {
-  @apply bg-apple-bg antialiased text-apple-text;
+  @apply bg-[#f5f5f7] antialiased text-[#1d1d1f];
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
   letter-spacing: -0.015em;
 }
