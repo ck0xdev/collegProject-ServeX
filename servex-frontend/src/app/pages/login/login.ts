@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-login',
   standalone: true,
   imports: [RouterLink, FormsModule],
-  templateUrl: './login.html'
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
   private authService = inject(AuthService);
