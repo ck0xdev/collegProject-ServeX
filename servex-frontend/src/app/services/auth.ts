@@ -1,31 +1,38 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, authState, GoogleAuthProvider, signInWithPopup, signOut, User } from '@angular/fire/auth';
+import { Auth, authState, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private auth = inject(Auth);
+  private auth: Auth = inject(Auth);
+  
+  // Observable to track user login status globally
   user$: Observable<User | null> = authState(this.auth);
 
-  async loginWithGoogle() {
-    const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(this.auth, provider);
-      return result.user;
-    } catch (error) {
-      console.error('Login failed', error);
-      throw error;
-    }
+  // Login with Email
+  login(email: string, pass: string) {
+    return signInWithEmailAndPassword(this.auth, email, pass);
   }
 
-  async logout() {
-    return await signOut(this.auth);
+  // Register with Email
+  register(email: string, pass: string) {
+    return createUserWithEmailAndPassword(this.auth, email, pass);
   }
 
-  // Get token for backend Authorization headers
-  async getIdToken(): Promise<string | null> {
+  // Google Login (Premium iOS feel)
+  googleLogin() {
+    return signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
+
+  // Logout
+  logout() {
+    return signOut(this.auth);
+  }
+
+  // Get Token for Backend (Crucial for Phase 4)
+  async getToken(): Promise<string | null> {
     const user = this.auth.currentUser;
     return user ? await user.getIdToken() : null;
   }
