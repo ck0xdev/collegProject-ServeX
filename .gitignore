@@ -7,3 +7,4 @@ servex-backend/.env
 
 dist/
 servex-backend/dist/
+src/app/app.routes.ts
